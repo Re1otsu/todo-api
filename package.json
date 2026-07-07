@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.js"
+    "dev": "nodemon --exec ts-node ./src/index.ts",
+    "build": "tsc",
+    "start": "node ./dist/index.js"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +22,13 @@
     "pg": "^8.22.0"
   },
   "devDependencies": {
-    "nodemon": "^3.1.14"
+    "@types/dotenv": "^6.1.1",
+    "@types/express": "^5.0.6",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^26.1.0",
+    "@types/pg": "^8.20.0",
+    "nodemon": "^3.1.14",
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.3"
   }
 }
