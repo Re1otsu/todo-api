@@ -18,7 +18,7 @@ app.get('/', (req:Request, res: Response) => {
 
 const PORT = process.env.PORT || 3000;
 
-const errorHandler = require('./middleware/errorHandler');
+const errorHandler = require('./middleware/errorHandler').default;
 app.use(errorHandler);
 
 app.listen(PORT, ()=> {
