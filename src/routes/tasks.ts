@@ -1,9 +1,9 @@
-const express = require('express');
-const auth = require('../middleware/auth').default;
-const validate = require('../middleware/validate').default;
-const asyncHandler = require('../middleware/asyncHandler').default;
-const Joi = require('joi');
-const taskController = require('../controllers/taskController').default;
+import express from 'express';
+import auth from '../middleware/auth';
+import validate from '../middleware/validate';
+import asyncHandler from '../middleware/asyncHandler';
+import Joi from 'joi';
+import taskController from '../controllers/taskController';
 
 
 const taskSchema = Joi.object({
@@ -25,4 +25,4 @@ router.delete('/:id', auth, asyncHandler(taskController.deleteTask));
 
 router.patch('/:id', auth,validate(updateTaskSchema), asyncHandler(taskController.updateTask));
 
-module.exports = router;
+export default router;
