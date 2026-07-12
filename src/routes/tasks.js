@@ -3,7 +3,7 @@ const auth = require('../middleware/auth').default;
 const validate = require('../middleware/validate');
 const asyncHandler = require('../middleware/asyncHandler');
 const Joi = require('joi');
-const taskController = require('../controllers/taskController');
+const taskController = require('../controllers/taskController').default;
 
 
 const taskSchema = Joi.object({
