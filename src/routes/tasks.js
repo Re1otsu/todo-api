@@ -1,7 +1,7 @@
 const express = require('express');
 const auth = require('../middleware/auth').default;
-const validate = require('../middleware/validate');
-const asyncHandler = require('../middleware/asyncHandler');
+const validate = require('../middleware/validate').default;
+const asyncHandler = require('../middleware/asyncHandler').default;
 const Joi = require('joi');
 const taskController = require('../controllers/taskController').default;
 
