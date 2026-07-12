@@ -1,12 +1,10 @@
-const express = require('express');
-const bcrypt = require('bcrypt');
-const pool = require('../db/pool');
-const jwt = require('jsonwebtoken');
-
+import express, {Request, Response} from 'express';
+import bcrypt from 'bcrypt';
+import pool from '../db/pool';
+import * as jwt from 'jsonwebtoken';
 const router = express.Router();
 
-
-router.post('/register', async(req,res) => {
+router.post('/register', async(req: Request, res: Response) => {
     try {
         const {email, password} = req.body;
         const passwordHash = await bcrypt.hash(password, 10);
@@ -18,7 +16,7 @@ router.post('/register', async(req,res) => {
     }
 })
 
-router.post('/login', async(req,res)=> {
+router.post('/login', async(req: Request, res: Response)=> {
     try{
         const{email, password} = req.body;
         const result = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
@@ -34,7 +32,7 @@ router.post('/login', async(req,res)=> {
             
             const token = jwt.sign(
                 {userId: user.id},
-                process.env.JWT_SECRET,
+                process.env.JWT_SECRET!,
                 {expiresIn: '24h'}
             );            
             res.status(200).json({token});
@@ -45,4 +43,4 @@ router.post('/login', async(req,res)=> {
     }
 })
 
-module.exports = router;
+export default router;

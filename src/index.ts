@@ -1,16 +1,18 @@
-const express = require('express');
+import {Request, Response} from 'express';
+
+import express from 'express';
 require('dotenv').config();
 
 const app = express();
 app.use(express.json());
 
-const auth = require('./routes/auth')
+import auth from './routes/auth';
 app.use('/auth', auth)
 
 const tasks = require('./routes/tasks')
 app.use('/tasks', tasks)
 
-app.get('/', (req,res) => {
+app.get('/', (req:Request, res: Response) => {
     res.json({message:'API работает'});
 });
 

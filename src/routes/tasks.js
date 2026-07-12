@@ -1,5 +1,5 @@
 const express = require('express');
-const auth = require('../middleware/auth');
+const auth = require('../middleware/auth').default;
 const validate = require('../middleware/validate');
 const asyncHandler = require('../middleware/asyncHandler');
 const Joi = require('joi');

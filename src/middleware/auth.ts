@@ -8,7 +8,10 @@ function authMiddleware(req: Request, res: Response, next: NextFunction) {
         return res.status(401).json({error: 'Токен не предоставлен'})
         }
         const token = authHeader.split(' ')[1];
-        const decoded = jwt.verify(token, process.env.JWT_SECRET!) as { userId: number };
+        if(!token){
+            return res.status(401).json({error: 'Токен не предоставлен'})
+        }
+        const decoded = jwt.verify(token, process.env.JWT_SECRET!) as unknown as { userId: number };
         req.userId = decoded.userId;
         next();
 

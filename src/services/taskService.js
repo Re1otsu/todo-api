@@ -1,4 +1,4 @@
-const pool = require('../db/pool');
+const pool = require('../db/pool').default;
 
 const getTasks = async(userId, sort, order, isDone, limit, offset) => {
     let query = 'SELECT * FROM tasks WHERE user_id = $1';
